@@ -5,13 +5,16 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('deviceorientation', function(event) {
             const { beta, gamma } = event;
 
-            // Map the beta and gamma values to a suitable range for the effect
+            // Map the beta and gamma values to a suitable range for tilting effect
             const xTilt = Math.min(Math.max(beta, -30), 30) / 30;
             const yTilt = Math.min(Math.max(gamma, -30), 30) / 30;
 
-            // Adjust the background gradient based on tilt
-            const angle = 135 + (xTilt * 30) + (yTilt * 30);
-            card.style.background = `linear-gradient(${angle}deg, #ff8c00, #ffd700, #adff2f, #00ff7f, #00bfff, #8a2be2, #ff00ff, #ff1493)`;
+            // Apply the tilt effect on the card
+            card.style.transform = `rotateX(${xTilt * 10}deg) rotateY(${yTilt * 10}deg)`;
+
+            // Adjust the pseudo-element glare effect
+            card.style.setProperty('--xTilt', `${xTilt * 50}%`);
+            card.style.setProperty('--yTilt', `${yTilt * 50}%`);
         });
     }
 });
