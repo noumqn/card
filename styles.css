@@ -70,3 +70,16 @@ h1 {
 .btn:hover {
     background-color: #005bb5;
 }
+
+@keyframes shimmer {
+    0% {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+    100% {
+        transform: translate(50%, 50%) rotate(45deg);
+    }
+}
+
+.portfolio-card.activated::before {
+    animation: shimmer 3s infinite linear;
+}
