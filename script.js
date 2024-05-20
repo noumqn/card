@@ -12,9 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
             // Apply the tilt effect on the card
             card.style.transform = `rotateX(${xTilt * 10}deg) rotateY(${yTilt * 10}deg)`;
 
-            // Adjust the pseudo-element glare effect
-            card.style.setProperty('--xTilt', `${xTilt * 50}%`);
-            card.style.setProperty('--yTilt', `${yTilt * 50}%`);
+            // Add or remove the shimmer effect based on tilt
+            if (Math.abs(xTilt) > 0.1 || Math.abs(yTilt) > 0.1) {
+                card.classList.add('activated');
+            } else {
+                card.classList.remove('activated');
+            }
         });
     }
 });
