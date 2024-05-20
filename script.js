@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Apply the tilt effect on the card
             card.style.transform = `rotateX(${xTilt * 10}deg) rotateY(${yTilt * 10}deg)`;
 
-            // Apply the glare effect
-            const glare = card.querySelector('::before');
-            glare.style.transform = `rotate(${(xTilt + yTilt) * 20}deg)`;
+            // Adjust the pseudo-element glare effect
+            card.style.setProperty('--xTilt', xTilt * 100 + '%');
+            card.style.setProperty('--yTilt', yTilt * 100 + '%');
         });
     }
 });
